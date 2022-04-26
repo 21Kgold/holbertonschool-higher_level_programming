@@ -1,1 +1,1 @@
-This repository contains exercises to developed to learn python code language.
+This repository contains exercises that are part of the process to learn python code language, at Holberton School.
