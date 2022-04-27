@@ -10,15 +10,14 @@
 int check_cycle(listint_t *list)
 {
 	int i, j;
-	listint_t *next_i = NULL, *next_j = NULL;
+	listint_t *next_i, *next_j;
 
-	next_i = list;
+	next_i = list->next;
 	next_j = list->next;
-	if (list == NULL || next_i != NULL)
+	if (list == NULL)
 	{
 		return (0);
 	}
-	next_i = list->next;
 	for (i = 0 ; next_i != NULL ; i++)
 	{
 		for (j = 0 ; next_j != NULL ; j++)
