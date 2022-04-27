@@ -9,38 +9,27 @@
 
 int check_cycle(listint_t *list)
 {
-	int i, j;
 	listint_t *next_i = NULL, *next_j = NULL;
 
-	next_i = list->next;
-	next_j = list->next;
-	if (list == NULL)
+	next_i = list;
+	next_j = list;
+	if (list == NULL || list->next == NULL)
 	{
 		return (0);
 	}
-	for (i = 0 ; next_i != NULL ; i++)
+	next_j = next_i->next;
+	for ( ; next_j != NULL ;)
 	{
-		for (j = 0 ; next_j != NULL ; j++)
+		for ( ; next_j != NULL ; )
 		{
-			if (list == next_j)
-			{
-				return (1);
-			}
 			if (next_i == next_j)
 			{
-				if (i == j)
-				{
-					next_j = next_j->next;
-					continue;
-				}
-				else
-				{
-					return (1);
-				}
+				return (1);
 			}
 			next_j = next_j->next;
 		}
 		next_i = next_i->next;
+		next_j = next_i->next;
 	}
 	return (0);
 }
