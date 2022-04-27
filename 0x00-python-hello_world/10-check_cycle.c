@@ -30,7 +30,7 @@ int check_cycle(listint_t *list)
 			{
 				if (i == j)
 				{
-					next_j = list->next;
+					next_j = next_j->next;
 					continue;
 				}
 				else
@@ -38,9 +38,9 @@ int check_cycle(listint_t *list)
 					return (1);
 				}
 			}
-			next_j = list->next;
+			next_j = next_j->next;
 		}
-		next_i = list->next;
+		next_i = next_i->next;
 	}
 	return (0);
 }
