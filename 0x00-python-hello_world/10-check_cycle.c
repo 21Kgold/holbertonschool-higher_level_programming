@@ -22,6 +22,10 @@ int check_cycle(listint_t *list)
 	{
 		for (j = 0 ; next_j != NULL ; j++)
 		{
+			if (list == next_j)
+			{
+				return (1);
+			}
 			if (next_i == next_j)
 			{
 				if (i == j)
