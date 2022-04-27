@@ -14,6 +14,10 @@ int check_cycle(listint_t *list)
 
 	next_i = list->next;
 	next_j = list->next;
+	if (list == NULL)
+	{
+		return (0);
+	}
 	for (i = 0 ; next_i != NULL ; i++)
 	{
 		for (j = 0 ; next_j != NULL ; j++)
@@ -27,12 +31,12 @@ int check_cycle(listint_t *list)
 				}
 				else
 				{
-					return(1);
+					return (1);
 				}
 			}
 			next_j = list->next;
 		}
 		next_i = list->next;
 	}
-	return(0);
+	return (0);
 }
