@@ -4,6 +4,8 @@ if __name__ == "__main__":
 
     if len(sys.argv) - 1 == 1:
         a = "argument:"
+    elif len(sys.argv) - 1 == 0:
+        a = "arguments."
     else:
         a = "arguments:"
     print("{} {}".format(len(sys.argv) - 1, a))
