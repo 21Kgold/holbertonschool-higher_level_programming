@@ -1,0 +1,32 @@
+Test for 1-my_list.py
+
+>>> MyList = __import__('1-my_list').MyList
+
+>>> new_list = MyList()
+>>> new_list.append(-55)
+>>> new_list.append(3)
+>>> new_list.append(2)
+>>> new_list.append(0)
+>>> print(new_list)
+[-55, 3, 2, 0]
+>>> new_list.print_sorted()
+[-55, 0, 2, 3]
+>>> print(new_list)
+[-55, 3, 2, 0]
+
+>>> new_list = MyList()
+>>> new_list.append(20)
+>>> print(new_list)
+[20]
+>>> new_list.print_sorted()
+[20]
+>>> print(new_list)
+[20]
+
+>>> new_list = MyList()
+>>> print(new_list)
+[]
+>>> new_list.print_sorted()
+[]
+>>> print(new_list)
+[]
