@@ -9,4 +9,4 @@ def read_file(filename=""):
     Reads a file using 'with'
     """
     with open(filename, 'r', encoding='utf-8') as file:
-        print(file.readlines(), end="")
+        print(file.read(), end="")
