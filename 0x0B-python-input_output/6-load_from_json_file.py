@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Function that creates an Object from a “JSON file”
+Function that creates an Object from a JSON file
 """
 
 import json
@@ -8,10 +8,8 @@ import json
 
 def load_from_json_file(filename):
     """
-    Function that convert from JSON to Python
-    json string and the result will be a Python dictionary
+    Function creates a Python dictionary from a JSON file
     """
-    with open(filename, mode='r') as file:
-        json_string = file.read()
-        python_dictionary = json.dumps(json_string)
+    with open(filename) as file:
+        python_dictionary = json.load(file)
         return python_dictionary
