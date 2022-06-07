@@ -120,7 +120,7 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """
-        Allow update the parameter values of a rectangle
+        Update attribute values of a rectangle
         using built in function: setattr(object, attribute, value)
         1st argument should be the id attribute
         2nd argument should be the width attribute
@@ -135,3 +135,15 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """
+        Returns the dictionary representation of a Rectangle
+        """
+        rectangle_diccionary = {}
+        rectangle_diccionary["id"] = self.id
+        rectangle_diccionary["width"] = self.width
+        rectangle_diccionary["height"] = self.height
+        rectangle_diccionary["x"] = self.x
+        rectangle_diccionary["y"] = self.y
+        return rectangle_diccionary

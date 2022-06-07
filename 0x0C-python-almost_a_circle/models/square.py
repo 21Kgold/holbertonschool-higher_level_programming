@@ -22,7 +22,7 @@ class Square(Rectangle):
         """
         Get size
         """
-        return self.__width
+        return self.width
 
     @size.setter
     def size(self, size):
@@ -41,3 +41,31 @@ class Square(Rectangle):
         b = f"{self.x}/{self.y}"
         c = f"{self.width}"
         return f"[Square] {a} {b} - {c}"
+
+    def update(self, *args, **kwargs):
+        """
+        Update attribute values of a square
+        using built in function: setattr(object, attribute, value)
+        1st argument should be the id attribute
+        2nd argument should be the size attribute
+        3rd argument should be the x attribute
+        4th argument should be the y attribute
+        """
+        attribute_list = ["id", "size", "x", "y"]
+        if args != None and len(args) != 0:
+            for i in range(len(args)):
+                setattr(self, attribute_list[i], args[i])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def to_dictionary(self):
+        """
+        Returns the dictionary representation of a Square
+        """
+        square_diccionary = {}
+        square_diccionary["id"] = self.id
+        square_diccionary["size"] = self.size
+        square_diccionary["x"] = self.x
+        square_diccionary["y"] = self.y
+        return square_diccionary
