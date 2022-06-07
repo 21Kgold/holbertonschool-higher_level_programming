@@ -31,4 +31,8 @@ class Base:
         into a json string
         """
 
-        return json.dumps(list_dictionaries)
+        if list_dictionaries is None:
+            list_dictionaries = []
+            return list_dictionaries
+        else:
+            return json.dumps(list_dictionaries)
