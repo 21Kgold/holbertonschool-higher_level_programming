@@ -6,6 +6,7 @@ Class Rectangle module
 
 from models.base import Base
 
+
 class Rectangle(Base):
     """
     Rectangle class
@@ -128,7 +129,7 @@ class Rectangle(Base):
         4th argument should be the x attribute
         5th argument should be the y attribute
         """
-        if args != None and len(args) != 0:
+        if args is not None and len(args) != 0:
             attributes_list = ["id", "width", "height", "x", "y"]
             for i in range(len(args)):
                 setattr(self, attributes_list[i], args[i])
