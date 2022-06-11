@@ -6,6 +6,7 @@ Class Square module
 
 from models.rectangle import Rectangle
 
+
 class Square(Rectangle):
     """
     Square class
@@ -16,7 +17,7 @@ class Square(Rectangle):
         """
         super().__init__(size, size, x, y, id)
         self.size = size
-    
+
     @property
     def size(self):
         """
@@ -52,7 +53,7 @@ class Square(Rectangle):
         4th argument should be the y attribute
         """
         attribute_list = ["id", "size", "x", "y"]
-        if args != None and len(args) != 0:
+        if args is not None and len(args) != 0:
             for i in range(len(args)):
                 setattr(self, attribute_list[i], args[i])
         else:
