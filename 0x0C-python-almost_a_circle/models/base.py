@@ -6,6 +6,9 @@ Class Base module
 
 import json
 import os.path
+import csv
+import turtle
+
 
 class Base:
     """
@@ -59,7 +62,8 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """
-        Function that returns the list of the JSON string representation
+        Function that returns a python object (list) of the JSON string
+        representation
         """
         if json_string is None:
             empty_list = []
@@ -100,6 +104,72 @@ class Base:
                     object_python_list.append(cls.create(**i))
             return object_python_list
 
+        else:
+            empty_list = []
+            return empty_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Function that updates a list to asign values to keys of an object of
+        Rectangle or Square class, then converts it into a csv string (first
+        line contains name/key of each column, separated by a comma, and the
+        rest of the lines contains the data asociated with that keys) and
+        write it into a csv file using it's class as a filename:
+        <class.csv>; Overwrites the file if already exists
+
+        csv.DictWriter(filename, fieldnames) takes the name of the CSV file
+        and a list of columns names or keys (fieldnames: represents the
+        sequence of key that recognise the order in which values in
+        dictionary are passed to the writerow() method) as an argument.
+
+        The writeheader() method writes the first row of the columns names
+        (or keys) in the CSV file that are the header row.
+
+        The writerow() method is used to write the single row at a time and
+        map the dictionary into CSV rows.
+        """
+
+        filename = cls.__name__ + ".csv"
+        key_value_list = []
+
+        if cls.__name__ == "Rectangle":
+            keys_list = ["id", "width", "height", "x", "y"]
+
+        elif cls.__name__ == "Square":
+            keys_list = ["id", "size", "x", "y"]
+
+        for element in list_objs:
+            key_value_list.append(cls.to_dictionary(element))
+
+        with open(filename, "w") as csv_file:
+            csv_writer = csv.DictWriter(csv_file, fieldnames=keys_list)
+            csv_writer.writeheader()
+            csv_writer.writerows(key_value_list)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Returns a list of instances
+        """
+
+        filename = cls.__name__ + ".csv"
+
+        if os.path.exists(filename):
+            object_python_list = []
+            with open(filename) as csv_file:
+
+                # csv.DictReader takes the keys from the first row in the
+                # csv file and creates one dictionary for each of the
+                # remaining lines using that keys; wich means it creates
+                # a diccionary per object
+
+                dict_matrix = csv.DictReader(csv_file)
+                for row in dict_matrix:
+                    # Cast "value" from string to int
+                    cast_row = {key: int(value) for key, value in row.items()}
+                    object_python_list.append(cls.create(**cast_row))
+            return object_python_list
         else:
             empty_list = []
             return empty_list
