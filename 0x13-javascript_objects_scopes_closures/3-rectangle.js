@@ -5,13 +5,14 @@ module.exports = class Rectangle {
       this.width = w;
       this.height = h;
     }
-    this.print = function () {
-      let square = '';
-      for (let i = 0; i < w; i++) {
-        square += 'X';
-      } for (let i = 0; i < h; i++) {
-        console.log(square);
-      }
-    };
+  }
+
+  print () {
+    let square = '';
+    for (let i = 0; i < this.width; i++) {
+      square += 'X';
+    } for (let i = 0; i < this.height; i++) {
+      console.log(square);
+    }
   }
 };
