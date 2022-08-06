@@ -11,10 +11,9 @@ if __name__ == "__main__":
                                  passwd=sys.argv[2], db=sys.argv[3], port=3306)
     match = str(sys.argv[4])
     cursor = connection.cursor()
-    select_query = "SELECT * FROM states WHERE name= '{}' \
+    select_query = "SELECT * FROM states WHERE name LIKE BINARY '{}' \
                     ORDER BY id ASC".format(match)
     cursor.execute(select_query)
     for row in cursor.fetchall():
         print(row)
-    cursor.close()
     connection.close()
