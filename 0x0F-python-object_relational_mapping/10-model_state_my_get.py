@@ -21,7 +21,7 @@ if __name__ == "__main__":
     session = factory()
     result = session.query(State).order_by(State.id) \
         .filter_by(name=match).all()
-    if (result is None):
+    if len(result) == 0:
         print("Not found")
     else:
         for row in result:
