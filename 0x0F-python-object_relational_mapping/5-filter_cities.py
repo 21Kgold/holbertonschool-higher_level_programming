@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-Lists "id" from table "cities" + "name" from table "cities" + "name" from table
-"states". Both tables frome database hbtn_0e_4_usa
+Lists "name" from table "cities" that match with command line "name" from
+table "states". Both tables frome database hbtn_0e_4_usa
 """
 
 import MySQLdb
@@ -15,6 +15,9 @@ if __name__ == "__main__":
     cursor.execute("SELECT cities.name FROM cities JOIN states ON \
                     cities.state_id = states.id WHERE states.name LIKE \
                     BINARY %s ORDER BY cities.id ASC;", (match, ))
+    list_of_cities = ""
     for row in cursor.fetchall():
-        print(row)
+        for city in row:
+            list_of_cities += f"{city}, "
+    print(list_of_cities[:-2])
     connection.close()
