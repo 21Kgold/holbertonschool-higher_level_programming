@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Connect to MySQL database remotely using python’s MySQLdb module
+Connect to MySQL database "states" remotely using python’s MySQLdb module
+and lists all states with a name starting with N
 """
 
 import MySQLdb

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
 Connect to MySQL database remotely using python’s MySQLdb module
+and lists all states who's name match a command line argument
 """
 
 import MySQLdb
