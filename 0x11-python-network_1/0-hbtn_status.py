@@ -10,4 +10,4 @@ if __name__ == "__main__":
     with urllib.request.urlopen(url) as response:
         body = response.read()
     print(f'Body response:\n\t- type: {body.__class__}\n\t- content: {body}\
-\n\t- utf8 content: {body.decode(encoding="UTF-8",errors="strict")}')
+\n\t- utf8 content: {body.decode()}')
