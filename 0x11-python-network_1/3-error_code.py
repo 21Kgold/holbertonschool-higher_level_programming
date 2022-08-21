@@ -12,7 +12,7 @@ from urllib.error import HTTPError
 from sys import argv
 
 if __name__ == "__main__":
-    url = sys.argv[1]
+    url = argv[1]
     try:
         req = Request(url)
         with urlopen(req) as response:
