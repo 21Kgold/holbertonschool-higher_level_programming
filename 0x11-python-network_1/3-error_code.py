@@ -10,10 +10,10 @@ from sys import argv
 
 if __name__ == "__main__":
     url = argv[1]
+    req = request.Request(url)
     try:
-        req = request.Request(url)
         with request.urlopen(req) as response:
             body = response.read()
             print(body.decode("utf-8"))
-    except HTTPError as HTTP_error:
-        print(f'Error code: {HTTP_error.code}')
+    except request.HTTPError as error:
+        print(f'Error code: {error.code}')
