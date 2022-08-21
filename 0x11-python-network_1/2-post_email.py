@@ -8,7 +8,7 @@ import urllib.request
 import urllib.parse
 import sys
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     url = sys.argv[1]
     # Create a dictionary to store the key-value pairs of POST parameters
     params_dict = {
@@ -21,6 +21,6 @@ if __name__ == "__main__":
     # Open the request as normal using urlopen() but by adding our data as an
     # extra argument, this will add our parameters to the request and change
     # the request type to POST (the default being GET).
-    with urllib.request.urlopen( url, data ) as response:
+    with urllib.request.urlopen(url, data) as response:
         response_text = response.read()
         print(f'Your email is: {response_text}')
