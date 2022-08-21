@@ -6,9 +6,6 @@ and print: Error code: followed by the HTTP status code while using urllib.
 """
 
 from urllib import request
-# The urllib.error module defines the exception classes for exceptions raised
-# by urllib.request. The base exception class is URLError.
-from urllib.error import HTTPError
 from sys import argv
 
 if __name__ == "__main__":
@@ -18,5 +15,5 @@ if __name__ == "__main__":
         with request.urlopen(req) as response:
             body = response.read()
             print(body.decode("utf-8"))
-    except HTTPError as error:
-        print(f'Error code: {error.code}')
+    except HTTPError as HTTP_error:
+        print(f'Error code: {HTTP_error.code}')
