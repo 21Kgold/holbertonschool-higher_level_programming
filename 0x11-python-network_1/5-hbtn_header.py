@@ -9,5 +9,8 @@ import sys
 
 if __name__ == "__main__":
     URL = sys.argv[1]
-    response = requests.get(URL).headers["X-Request-Id"]
-    print("{}".format(response))
+    try:
+        response = requests.get(URL).headers["X-Request-Id"]
+        print("{}".format(response))
+    except:
+        pass
