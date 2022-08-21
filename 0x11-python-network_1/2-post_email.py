@@ -8,7 +8,7 @@ import urllib.request
 import urllib.parse
 import sys
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     url = sys.argv[1]
     # Create a dictionary to store the key-value pairs of POST parameters
     params_dict = {
