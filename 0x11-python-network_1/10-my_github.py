@@ -10,7 +10,7 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    usr = sys.rgv[1]
+    usr = sys.argv[1]
     pwd = sys.argv[2]
     response = requests.get('https://api.github.com/user', auth=(usr, pwd))
     json_response = response.json()
