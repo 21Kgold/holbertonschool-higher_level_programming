@@ -13,28 +13,17 @@ import sys
 
 if __name__ == "__main__":
     url = "http://0.0.0.0:5000/search_user"
+    letter = ""
+    if len(argv) != 1:
+        letter = argv[1]
+    value = {'q': letter}
+    req = requests.post(url, data=value)
     try:
-        value = sys.argv[1]
-        try:
-            if sys.argv[1].isalpha() is False or len(sys.argv[1]) != 1:
-                print("No result")
-                quit()
-        except IndexError:
-            value = ""
-    except IndexError:
-        value = ""
-    # Search in the url
-    response = requests.post(url, data={'q': value})
-    try:
-        json_response = response.json()
-    except Exception:
-        print("No result")
-    else:
-        try:
-            id_string = json_response.get("id")
-            name_string = json_response.get("name")
-        except Exception:
-            print("Not a valid JSON")
+        response_json = req.json()
+        if response_json:
+            print("[{}] {}".format(response_json.get('id'),
+                  response_json.get('name')))
         else:
-            print("[<{}>] <{}>".format(json_response.get("id"),
-                                       json_response.get("name")))
+            print("No result")
+    except Exception:
+        print("Not a valid JSON")
