@@ -14,8 +14,8 @@ import sys
 if __name__ == "__main__":
     url = "http://0.0.0.0:5000/search_user"
     letter = ""
-    if len(argv) != 1:
-        letter = argv[1]
+    if len(sys.argv) != 1:
+        letter = sys.argv[1]
     value = {'q': letter}
     req = requests.post(url, data=value)
     try:
