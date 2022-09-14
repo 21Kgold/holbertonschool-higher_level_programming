@@ -6,9 +6,6 @@
 
 const axios = require('axios');
 const episode = process.argv[2];
-if (episode < 1 || isNaN(episode) === true) {
-	return;
-} else {
 const URL = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
 axios.get(URL)
   .then(function (response) {
@@ -20,5 +17,8 @@ axios.get(URL)
           console.log(name);
         });
     }
+  }).catch(function (error) {
+    if (error.response) {
+      console.log('code:', error.response.status);
+    }
   });
-}
