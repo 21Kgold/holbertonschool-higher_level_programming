@@ -13,7 +13,7 @@ axios.get(args[2])
     for (let i = 0; i < films.length; i++) {
       const characters = films[i].characters;
       for (let j = 0; j < characters.length; j++) {
-        if (characters[j] === 'https://swapi-api.hbtn.io/api/people/18/') {
+        if (characters[j].includes('18')) {
           match++;
         }
       }
