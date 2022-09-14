@@ -5,6 +5,10 @@
 // Use the starwars Api https://swapi-api.hbtn.io/
 
 const axios = require('axios');
+const episode = process.argv[2];
+if (episode < 1 || isNaN(episode) === true) {
+	return;
+} else {
 const URL = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
 axios.get(URL)
   .then(function (response) {
@@ -17,3 +21,4 @@ axios.get(URL)
         });
     }
   });
+}
