@@ -4,7 +4,6 @@
 // Display one character name by line, same order as the object
 // Use the starwars Api https://swapi-api.hbtn.io/
 
-
 const request = require('request');
 const episode = process.argv[2];
 const url = 'https://swapi-api.hbtn.io/api/films/' + episode;
