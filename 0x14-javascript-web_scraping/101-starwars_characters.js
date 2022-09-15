@@ -1,23 +1,32 @@
 #!/usr/bin/node
 // Script that prints all characters of a Star Wars movie:
 // The first argument is the Movie ID - example: 3 = “Return of the Jedi”
-// Display one character name by line
+// Display one character name by line, same order as the object
 // Use the starwars Api https://swapi-api.hbtn.io/
 
-const axios = require('axios');
-const URL = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
-axios.get(URL)
-  .then(function (response) {
-    const films = response.data.characters;
-    for (let i = 0; i < films.length; i++) {
-      axios.get(films[i])
-        .then(function (res) {
-          const name = res.data.name;
-          console.log(name);
-        });
+
+const request = require('request');
+const episode = process.argv[2];
+const url = 'https://swapi-api.hbtn.io/api/films/' + episode;
+
+function checkCharacter (characters, numChar) {
+  if (numChar === characters.length) {
+    return;
+  }
+  request(characters[numChar], function (error2, response2, body2) {
+    if (error2) {
+      console.log('code:', response2.statusCode);
     }
-  }).catch(function (error) {
-    if (error.response) {
-      console.log(error.response.status);
-    }
+    console.log(JSON.parse(body2).name);
+    checkCharacter(characters, numChar + 1);
   });
+}
+
+request(url, function (error, response, body) {
+  if (error) {
+    console.log('code:', response.statusCode);
+  } else {
+    const jsonBody = JSON.parse(body);
+    checkCharacter(jsonBody.characters, 0);
+  }
+});
